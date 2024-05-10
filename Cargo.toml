@@ -1,0 +1,25 @@
+[package]
+name = "enassi-rs-commands"
+description = "Rust commands for enassi."
+version = "1.0.0"
+authors = ["newproplus <https://github.com/newproplus>"]
+homepage = "https://github.com/enassi/enassi-rs-commands"
+repository = "https://github.com/enassi/enassi-rs-commands"
+edition = "2021"
+license-file = "LICENSE"
+readme = "README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+
+[dependencies]
+anyhow = "1.0"
+base64 = "0.21"
+chrono = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+enassi-rs-encrypt = "1.0"
+enassi-rs-utils = "1.0"
+
+[features]
