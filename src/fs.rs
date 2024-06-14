@@ -6,6 +6,7 @@ use enassi_rs_utils::{fs as xu_fs, fs_dir::FileNode, zip as xu_zip};
 use std::{
     error::Error,
     fs::{self, File},
+    io,
     path::Path,
 };
 
@@ -190,4 +191,14 @@ pub fn unzip_file(file_path: &str, dir_path: &str) -> Result<(), Box<dyn Error>>
     xu_fs::check_or_create_dir(&dir_path)?;
     xu_zip::unzip_file(&file_path, &dir_path)?;
     return Ok(());
+}
+
+pub fn search_document(
+    dir_path: &Path,
+    use_re: bool,
+    search: &str,
+    wrapper: &str,
+    context_size: usize,
+) -> Result<Vec<String>, io::Error> {
+    xu_fs::search_document(dir_path, use_re, search, wrapper, context_size)
 }
