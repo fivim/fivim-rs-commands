@@ -7,7 +7,7 @@ use std::{
     error::Error,
     fs::{self, File},
     io,
-    path::Path,
+    path::{Path, PathBuf},
 };
 
 pub fn copy_file(file_path: &str, target_file_path: &str) -> Result<(), Box<dyn Error>> {
@@ -194,11 +194,11 @@ pub fn unzip_file(file_path: &str, dir_path: &str) -> Result<(), Box<dyn Error>>
 }
 
 pub fn search_document(
-    dir_path: &Path,
+    dir_path: &PathBuf,
     use_re: bool,
     search: &str,
-    wrapper: &str,
     context_size: usize,
+    wrapper: &str,
 ) -> Result<Vec<String>, io::Error> {
-    xu_fs::search_document(dir_path, use_re, search, wrapper, context_size)
+    xu_fs::search_document(dir_path, use_re, search, context_size, wrapper)
 }
