@@ -1,7 +1,7 @@
 use base64::engine::general_purpose::STANDARD as b64_STANDARD;
 use base64::Engine;
-use enassi_rs_encrypt::{aes_gcm, chacha20poly1305 as x_cp};
-use enassi_rs_utils::{fs as xu_fs, hash as xu_hash};
+use fivim_rs_encrypt::{aes_gcm, chacha20poly1305 as x_cp};
+use fivim_rs_utils::{fs as xu_fs, hash as xu_hash};
 use std::error::Error;
 
 pub fn encrypt_string_into_file(
