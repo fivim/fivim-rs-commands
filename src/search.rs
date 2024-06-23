@@ -1,7 +1,7 @@
 use fivim_rs_utils::search as xu_search;
 use std::{io, path::PathBuf};
 
-pub fn search_document_dir(
+pub fn search_in_dir(
     dir_path: String,
     is_re_mode: bool,
     search: String,
@@ -23,7 +23,7 @@ pub fn search_document_dir(
     )
 }
 
-pub fn search_document_file(
+pub fn search_in_file(
     file_path: String,
     is_re_mode: bool,
     search: String,
