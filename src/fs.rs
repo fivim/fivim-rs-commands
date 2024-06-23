@@ -2,12 +2,11 @@ use crate::types;
 use base64::engine::general_purpose::STANDARD;
 use base64::Engine;
 use chrono::{DateTime, FixedOffset};
-use fivim_rs_utils::{fs as xu_fs, fs_dir::FileNode, search as xu_search, zip as xu_zip};
+use fivim_rs_utils::{fs as xu_fs, fs_dir::FileNode, zip as xu_zip};
 use std::{
     error::Error,
     fs::{self, File},
-    io,
-    path::{Path, PathBuf},
+    path::Path,
 };
 
 pub fn copy_file(file_path: &str, target_file_path: &str) -> Result<(), Box<dyn Error>> {
@@ -191,44 +190,4 @@ pub fn unzip_file(file_path: &str, dir_path: &str) -> Result<(), Box<dyn Error>>
     xu_fs::check_or_create_dir(&dir_path)?;
     xu_zip::unzip_file(&file_path, &dir_path)?;
     return Ok(());
-}
-
-pub fn search_document_dir(
-    dir_path: String,
-    is_re_mode: bool,
-    search: String,
-    context_size: usize,
-    wrapper_prefix: String,
-    wrapper_postfix: String,
-) -> Result<Vec<xu_search::SearchFileRes>, io::Error> {
-    let p = PathBuf::from(&dir_path);
-
-    xu_search::search_document_dir_wrapper(
-        &p,
-        &search,
-        is_re_mode,
-        context_size,
-        &wrapper_prefix,
-        &wrapper_postfix,
-    )
-}
-
-pub fn search_document_file(
-    file_path: String,
-    is_re_mode: bool,
-    search: String,
-    context_size: usize,
-    wrapper_prefix: String,
-    wrapper_postfix: String,
-) -> Result<Vec<xu_search::SearchFileRes>, io::Error> {
-    let p = PathBuf::from(&file_path);
-
-    xu_search::search_document_file_wrapper(
-        &p,
-        &search,
-        is_re_mode,
-        context_size,
-        &wrapper_prefix,
-        &wrapper_postfix,
-    )
 }
